@@ -14,13 +14,21 @@ module.exports = {
 
         res.status(200).send({
             error: false,
-            data, // data: data
-            
+            data // data: data
+
         })
 
     },
 
     create: async (req, res) => {
+
+        const data = await Department.create(req.body)
+
+        res.status(201).send({
+            error: false,
+            data
+
+        })
 
     },
 
