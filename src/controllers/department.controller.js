@@ -46,6 +46,15 @@ module.exports = {
 
     update: async (req, res) => {
 
+        const data = await Department.updateOne({  _id: req.params.id }, req.body)
+
+        res.status(202).send({
+            error: false,
+            data,
+            new: await Department.findOne({ _id: req.params.id })
+
+        })
+
     },
 
     delete: async (req, res) => {
