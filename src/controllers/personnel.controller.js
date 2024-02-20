@@ -9,14 +9,12 @@ module.exports = {
 
     list: async (req, res) => {
 
-        // const data = await Personnel.find(search).sort(sort).skip(skip).limit(limit)
-        const data = await res.getModelList(Personnel)
+        const data = await res.getModelList(Personnel, {}, 'departmentId')
 
         res.status(200).send({
             error: false,
             detail: await res.getModelListDetails(Personnel),
-            data // data: data
-
+            data
         })
 
     },
@@ -26,7 +24,7 @@ module.exports = {
         // isLead Control:
         const isLead = req.body?.isLead || false
         if (isLead) {
-            await Personnel.updateMany({ departmentId: req.params.departmentId, isLead: true }, { isLead: false })
+            const xyz = await Personnel.updateMany({ departmentId: req.body.departmentId, isLead: true }, { isLead: false })
         }
 
         const data = await Personnel.create(req.body)
@@ -34,7 +32,6 @@ module.exports = {
         res.status(201).send({
             error: false,
             data
-
         })
 
     },
@@ -46,34 +43,35 @@ module.exports = {
         res.status(200).send({
             error: false,
             data
-
         })
 
     },
 
     update: async (req, res) => {
 
-        const data = await Personnel.updateOne({  _id: req.params.id }, req.body)
+        // isLead Control:
+        const isLead = req.body?.isLead || false
+        if (isLead) {
+            const { departmentId } = await Personnel.findOne({ _id: req.params.id }, { departmentId: 1 })
+            await Personnel.updateMany({ departmentId, isLead: true }, { isLead: false })
+        }
+
+        const data = await Personnel.updateOne({ _id: req.params.id }, req.body, { runValidators: true })
 
         res.status(202).send({
             error: false,
             data,
             new: await Personnel.findOne({ _id: req.params.id })
-
         })
-
     },
 
     delete: async (req, res) => {
 
         const data = await Personnel.deleteOne({ _id: req.params.id })
 
-        const isDeleted = data.deletedCount >= 1 ? true : false
-
-        res.status(isDeleted ? 204 : 404).send({
-            error: isDeleted,
+        res.status(data.deletedCount ? 204 : 404).send({
+            error: !data.deletedCount,
             data
-
         })
-    }
+    },
 }
