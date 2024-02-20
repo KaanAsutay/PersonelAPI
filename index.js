@@ -34,7 +34,8 @@ dbConnection()
 // Accept JSON:
 app.use(express.json())
 
-
+// SessionCookies:
+app.use(require('cookie-session')({ secret: process.env.SECRET_KEY }))
 
 
 
