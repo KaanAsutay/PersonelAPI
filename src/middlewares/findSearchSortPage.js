@@ -53,6 +53,5 @@ module.exports = (req, res, next) => {
         if (details.totalRecords <= limit) details.pages = false
         return details
     }
-
     next()
 }
