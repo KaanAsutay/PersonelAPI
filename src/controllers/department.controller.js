@@ -34,6 +34,14 @@ module.exports = {
 
     read: async (req, res) => {
 
+        const data = await Department.findOne({ _id: req.params.id })
+
+        res.status(200).send({
+            error: false,
+            data
+
+        })
+
     },
 
     update: async (req, res) => {
