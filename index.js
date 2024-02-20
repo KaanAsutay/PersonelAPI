@@ -28,7 +28,11 @@ require('express-async-errors')
 const { dbConnection } = require('./src/configs/dbConnection')
 dbConnection()
 
+/* ------------------------------------------------------- */
+// Middlewares:
 
+// Accept JSON:
+app.use(express.json())
 
 
 
