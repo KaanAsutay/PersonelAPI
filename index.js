@@ -51,6 +51,9 @@ app.all('/', (req, res) => {
     })
 })
 
+// /departments
+app.use('/departments', require('./src/routes/department.router'))
+
 /* ------------------------------------------------------- */
 
 // errorHandler:
