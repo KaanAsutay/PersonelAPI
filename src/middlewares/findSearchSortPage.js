@@ -29,14 +29,14 @@ module.exports = (req, res, next) => {
     // Run SearchingSortingPagination engine for Model:
     res.getModelList = async function (Model, filters, populate = null) {
 
-        const filtersSearch = { ...filters, ...search  }
+        const filtersAndSearch = { ...filters, ...search  }
 
         return await Model.find(search).sort(sort).skip(skip).limit(limit).populate(populate)
     }
 
     // Details:
     res.getModelListDetails = async function (Model, filters) {
-        const data = await Model.find(search)
+        const data = await Model.find(filtersAndSearch)
         let details = {
             search,
             sort,
