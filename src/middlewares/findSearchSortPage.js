@@ -31,12 +31,16 @@ module.exports = (req, res, next) => {
 
         const filtersAndSearch = { ...filters, ...search  }
 
-        return await Model.find(search).sort(sort).skip(skip).limit(limit).populate(populate)
+        return await Model.find(filtersAndSearch).sort(sort).skip(skip).limit(limit).populate(populate)
     }
 
     // Details:
     res.getModelListDetails = async function (Model, filters) {
+
+        const filtersAndSearch = { ...filters, ...search }
+
         const data = await Model.find(filtersAndSearch)
+
         let details = {
             search,
             sort,
