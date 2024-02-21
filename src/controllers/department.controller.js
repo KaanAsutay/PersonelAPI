@@ -25,11 +25,11 @@ module.exports = {
 
         const Personnel = require('../models/personnel.model')
 
-        const data = await res.getModelList(Personnel, { departmentID: req.params.id })
+        const data = await res.getModelList(Personnel, { departmentID: req.params.id }, 'departmentId')
 
         res.status(200).send({
             error: false,
-            detail: await res.getModelListDetails(Personnel),
+            detail: await res.getModelListDetails(Personnel, { departmentID: req.params.id }, 'departmentId'),
             data
 
         })
