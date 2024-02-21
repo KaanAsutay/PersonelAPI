@@ -23,13 +23,14 @@ module.exports = {
 
     personnels: async (req, res) => {
 
-        // const data = await Department.find(search).sort(sort).skip(skip).limit(limit)
-        const data = await res.getModelList(Department)
+        const Personnel = require('../models/personnel.model')
+
+        const data = await res.getModelList(Personnel)
 
         res.status(200).send({
             error: false,
-            detail: await res.getModelListDetails(Department),
-            data // data: data
+            detail: await res.getModelListDetails(Personnel),
+            data
 
         })
 
