@@ -40,25 +40,31 @@ app.use(require('cookie-session')({ secret: process.env.SECRET_KEY }))
 // res.getModelList():
 app.use(require('./src/middlewares/findSearchSortPage'))
 
-// Login/Logout Control Middleware
-app.use(async (req, res, next) => {
+// Cookie: Login/Logout Control Middleware
+// app.use(async (req, res, next) => {
     
 
-    const Personnel = require('./src/models/personnel.model')
+//     const Personnel = require('./src/models/personnel.model')
 
-    req.isLogin = false
+//     req.isLogin = false
 
-    if (req.session?.id) {
+//     if (req.session?.id) {
 
-        const user = Personnel.findOne({ _id: req.session?.id })
+//         const user = Personnel.findOne({ _id: req.session?.id })
 
-        // if (user.password == req.session.password) {
-        //     req.isLogin = true
-        // }
-        req.isLogin = user.password == req.session.password
-    }
+//         // if (user.password == req.session.password) {
+//         //     req.isLogin = true
+//         // }
+//         req.isLogin = user.password == req.session.password
+//     }
 
-    next()
+//     next()
+// })
+
+app.use(async (req, res, next) => {
+
+    
+
 })
 
 /* ------------------------------------------------------- */
