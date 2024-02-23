@@ -63,7 +63,7 @@ app.use(require('./src/middlewares/findSearchSortPage'))
 
 //* Moved -> middlewares/authentication.js
 
-
+app.use(require('./src/middlewares/authentication'))
 
 /* ------------------------------------------------------- */
 // Routes:
