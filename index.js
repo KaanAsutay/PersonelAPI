@@ -76,8 +76,7 @@ app.use((req, res, next) => {
             console.log('JWT Login: NO')
         } else {
             req.isLogin = true
-            // req.user = user
-            req.user = user.isActive ? user : null
+            req.user = user
             console.log('JWT Login: YES')
         }
     })
@@ -92,8 +91,9 @@ app.all('/', (req, res) => {
     res.send({
         error: false,
         message: 'Welcome to PERSONEL API',
-        session: req.session,
-        isLogin: req.isLogin
+        // session: req.session,
+        isLogin: req.isLogin,
+        user: req.user
     })
 })
 
