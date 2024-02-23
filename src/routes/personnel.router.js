@@ -6,6 +6,7 @@ const router = require('express').Router()
 /* ------------------------------------------------------- */
 
 const personnel = require('../controllers/personnel.controller')
+const permissions = require('../middlewares/permissions')
 
 // URL: /deparments
 
@@ -14,14 +15,14 @@ router.post('/login', personnel.login)
 router.all('/logout', personnel.logout)
 
 router.route('/')
-    .get(personnel.list)
-    .post(personnel.create)
+    .get(permissions.isAdmin, personnel.list)
+    .post(permissions.isAdmin, personnel.create)
 
 router.route('/:id')
-    .get(personnel.read)
-    .put(personnel.update)
-    .patch(personnel.update)
-    .delete(personnel.delete)
+    .get(permissions.isAdminOrOwner, personnel.read)
+    .put(permissions.isAdminOrOwner, personnel.update)
+    .patch(permissions.isAdminOrOwner, personnel.update)
+    .delete(permissions.isAdmin, personnel.delete)
 
 /* ------------------------------------------------------- */
 module.exports = router
