@@ -47,7 +47,7 @@ module.exports = {
 
         if (
             req.user &&
-            (req.user.isAdmin || (req.user._id == userId && req.method != 'DELETE'))
+            (req.user.isAdmin || (req.user._id == userId))
         ) {
             next()
         } else {
