@@ -39,6 +39,8 @@ module.exports = {
                         password: user.password
                     }
 
+                    const refreshToken = jwt.sign(refreshData, process.env.REFRESH_KEY, { expiresIn: '3d' })
+
                 } else {
                     res.errorStatusCode = 401
                     throw new Error('This account is not active.')
@@ -66,5 +68,4 @@ module.exports = {
 
 
     },
-
 }
