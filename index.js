@@ -61,27 +61,9 @@ app.use(require('./src/middlewares/findSearchSortPage'))
 //     next()
 // })
 
-const jwt = require('jsonwebtoken')
+//* Moved -> middlewares/authentication.js
 
-app.use((req, res, next) => {
 
-    const auth = req.headers?.authorization || null // get Authorization
-    const accessToken = auth ? auth.split(' ')[1] : null  // get JWT
-
-    req.isLogin = false
-
-    jwt.verify(accessToken, process.env.ACCESS_KEY, function(err, user) {
-        if (err) {
-            req.user = null
-            console.log('JWT Login: NO')
-        } else {
-            req.isLogin = true
-            req.user = user
-            console.log('JWT Login: YES')
-        }
-    })
-    next()
-})
 
 /* ------------------------------------------------------- */
 // Routes:
