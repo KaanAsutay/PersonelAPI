@@ -70,7 +70,7 @@ app.use((req, res, next) => {
 
     req.isLogin = false
 
-    jwt.verify(accessToken, process.env.SECRET_KEY, function(err, user) {
+    jwt.verify(accessToken, process.env.ACCESS_KEY, function(err, user) {
         if (err) {
             req.user = null
             console.log('JWT Login: NO')
