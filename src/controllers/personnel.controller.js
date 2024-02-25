@@ -111,6 +111,11 @@ module.exports = {
 
     delete: async (req, res) => {
 
+         /*
+            #swagger.tags = ["Personnels"]
+            #swagger.summary = "Delete Personnel"
+        */
+
         const data = await Personnel.deleteOne({ _id: req.params.id })
 
         res.status(data.deletedCount ? 204 : 404).send({

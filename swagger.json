@@ -371,6 +371,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "Personnels"
+        ],
+        "summary": "Delete Personnel",
         "description": "",
         "parameters": [
           {
