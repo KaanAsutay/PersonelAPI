@@ -1,14 +1,15 @@
 {
+  "title": "Personel API",
   "name": "personnelapi",
   "version": "1.0.0",
-  "description": "",
+  "description": "Personel Management System",
   "main": "index.js",
   "scripts": {
     "start": "nodemon",
     "debug": "DEBUG=* nodemon"
   },
   "keywords": [],
-  "author": "",
+  "author": "Clarusway",
   "license": "ISC",
   "dependencies": {
     "cookie-session": "^2.0.0",
