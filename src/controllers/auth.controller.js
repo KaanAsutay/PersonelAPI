@@ -17,7 +17,15 @@ module.exports = {
             #swagger.tags = ['Authentication']
             #swagger.summary = 'JWT: Login'
             #swagger.description = 'Login with username and password'
-
+            _swagger.deprecated = true
+            _swagger.ignore = true
+            #swagger.parametres['body'] = {
+                in: 'body',
+                required: true,
+                schema: {
+                    username: 'test,
+                    password: '1234'                }
+            }
         */
 
 
@@ -89,7 +97,15 @@ module.exports = {
             #swagger.tags = ['Authentication']
             #swagger.summary = 'JWT: Refresh'
             #swagger.description = 'Refresh accesToken with refreshToken'
-
+            #swagger.parameters['body'] = {
+                in: 'body',
+                required: true,
+                schema: {
+                    token: {
+                        refresh: '...refreshToken...'
+                    }
+                }
+            }
         */
 
         const refreshToken = req.body?.token?.refresh || null
@@ -124,7 +140,6 @@ module.exports = {
             #swagger.tags = ['Authentication']
             #swagger.summary = 'JWT: Logout'
             #swagger.description = 'No need any doing for logout. You must deleted Bearer Token from your browser.'
-
         */
 
         res.send({
