@@ -323,6 +323,10 @@
     },
     "/personnels/{id}": {
       "get": {
+        "tags": [
+          "Personnels"
+        ],
+        "summary": "Get Single Personnel",
         "description": "",
         "parameters": [
           {
@@ -339,13 +343,25 @@
         }
       },
       "put": {
-        "description": "",
+        "tags": [
+          "Personnels"
+        ],
+        "summary": "Update Personnel",
+        "description": "Look to <b>'Models/Personnel'</b> for parameters.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Personnel"
+            }
           }
         ],
         "responses": {
@@ -374,13 +390,25 @@
         }
       },
       "patch": {
-        "description": "",
+        "tags": [
+          "Personnels"
+        ],
+        "summary": "Update Personnel",
+        "description": "Look to <b>'Models/Personnel'</b> for parameters.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Personnel"
+            }
           }
         ],
         "responses": {

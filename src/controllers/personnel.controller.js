@@ -64,6 +64,11 @@ module.exports = {
 
     read: async (req, res) => {
 
+        /*
+            #swagger.tags = ["Personnels"]
+            #swagger.summary = "Get Single Personnel"
+        */
+
         const data = await Personnel.findOne({ _id: req.params.id })
 
         res.status(200).send({
@@ -74,6 +79,19 @@ module.exports = {
     },
 
     update: async (req, res) => {
+
+        /*
+            #swagger.tags = ["Personnels"]
+            #swagger.summary = "Update Personnel"
+            #swagger.description = "Look to <b>'Models/Personnel'</b> for parameters."
+            #swagger.parameters['body'] = {
+                in: 'body',
+                required: 'true',
+                schema: {
+                    $ref: '#/definitions/Personnel'
+                }
+            }
+        */
 
         // isLead Control:
         const isLead = req.body?.isLead || false
