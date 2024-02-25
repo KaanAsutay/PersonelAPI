@@ -34,6 +34,17 @@ dbConnection()
 // Logging:
 // npm i morgan
 
+const morgan = require('morgan')
+// console.log(morgan)
+// app.use(morgan('combined'))
+// app.use(morgan('IP:remote-addr TIME:[:date[clf]] REQ:":method :url HTTP/:http-version" RES::status :res[content-length] APP:":user-agent"'))
+
+//? Write logs to file:
+const fs = require('node:fs')
+app.use(morgan('combined', {
+    stream: fs.createWriteStream('access.log', { flags: 'a' })
+}))
+
 // Accept JSON:
 app.use(express.json())
 
