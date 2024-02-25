@@ -299,18 +299,18 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Personnels"
+        ],
+        "summary": "Create Personnel",
+        "description": "Look to <b>'Models/Personnel'</b> for parameters.",
         "parameters": [
           {
             "name": "body",
             "in": "body",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "departmentId": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/Personnel"
             }
           }
         ],

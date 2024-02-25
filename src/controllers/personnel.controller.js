@@ -34,6 +34,19 @@ module.exports = {
 
     create: async (req, res) => {
 
+        /*
+            #swagger.tags = ["Personnels"]
+            #swagger.summary = "Create Personnel"
+            #swagger.description = "Look to <b>'Models/Personnel'</b> for parameters."
+            #swagger.parameters['body'] = {
+                in: 'body',
+                required: 'true',
+                schema: {
+                    $ref: '#/definitions/Personnel'
+                }
+            }
+        */
+
         // isLead Control:
         const isLead = req.body?.isLead || false
         if (isLead) {
