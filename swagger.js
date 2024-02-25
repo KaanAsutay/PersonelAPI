@@ -7,8 +7,20 @@ const HOST = process.env?.HOST || '127.0.0.1'
 const PORT = process.env?.PORT || 8000
 /* ------------------------------------------------------- */
 // npm i swagger-autogen
+/* ------------------------------------------------------- *
+const options = {
+	openapi:          <string>,     // Enable/Disable OpenAPI.                        By default is null
+	language:         <string>,     // Change response language.                      By default is 'en-US'
+	disableLogs:      <boolean>,    // Enable/Disable logs.                           By default is false
+	autoHeaders:      <boolean>,    // Enable/Disable automatic headers recognition.  By default is true
+	autoQuery:        <boolean>,    // Enable/Disable automatic query recognition.    By default is true
+	autoBody:         <boolean>,    // Enable/Disable automatic body recognition.     By default is true
+	writeOutputFile:  <boolean>     // Enable/Disable writing the output file.        By default is true
+};
+/* ------------------------------------------------------- */
 
-const swaggerAutogen = require('swagger-autogen')
+// const swaggerAutogen = require('swagger-autogen')({ openapi: '3.0.0' })
+const swaggerAutogen = require('swagger-autogen')()
 const packageJson = require('./package.json')
 
 const document = {
