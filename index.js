@@ -97,6 +97,35 @@ const swaggerJson = require('./swagger.json')
 app.use('/docs/swagger', swaggerUi.serve, swaggerUi.setup(swaggerJson, { swaggerOptions: { persistAuthorization: true } }))
 // Redoc:
 // npm i redoc-express
+const redoc = require('redoc-express')
+app.use('/docs/json', (req, res) => {
+    res.sendFile('swagger.json', { root: '.' })
+})
+app.use('/docs/redoc', redoc({
+    specUrl: '/docs/json',
+    title: 'API Docs',
+    // redocOptions: {
+    //     theme: {
+    //         colors: {
+    //             primary: {
+    //                 main: '#6EC5AB'
+    //             }
+    //         },
+    //         typography: {
+    //             fontFamily: `"museo-sans", 'Helvetica Neue', Helvetica, Arial, sans-serif`,
+    //             fontSize: '15px',
+    //             lineHeight: '1.5',
+    //             code: {
+    //                 code: '#87E8C7',
+    //                 backgroundColor: '#4D4D4E'
+    //             }
+    //         },
+    //         menu: {
+    //             backgroundColor: '#ffffff'
+    //         }
+    //     }
+    // }
+}))
 
 /* ------------------------------------------------------- */
 // Routes:
