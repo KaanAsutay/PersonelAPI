@@ -31,6 +31,9 @@ dbConnection()
 /* ------------------------------------------------------- */
 // Middlewares:
 
+// Logging:
+// npm i morgan
+
 // Accept JSON:
 app.use(express.json())
 
