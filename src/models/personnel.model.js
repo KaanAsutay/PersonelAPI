@@ -19,6 +19,8 @@ const PersonnelSchema = new mongoose.Schema({
         trim: true,
         required: true,
         unique: true,
+        dataType: 'string',
+        exampleUsing: "username: test"
     },
 
     password: {
