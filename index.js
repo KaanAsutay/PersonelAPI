@@ -88,6 +88,14 @@ app.use(require('./src/middlewares/findSearchSortPage'))
 
 app.use(require('./src/middlewares/authentication'))
 
+// Documentation Middlewares:
+// Swagger-UI:
+// npm i swagger-ui-express
+const swaggerUi = require('swagger-ui-express')
+const swaggerJson = require('./swagger.json')
+// Parse/Run swagger.json and publish on any URL:
+app.use('/docs/swagger', swaggerUi.serve, swaggerUi.setup(swaggerJson, { swaggerOptions: { persistAuthorization: true } }))
+
 /* ------------------------------------------------------- */
 // Routes:
 
