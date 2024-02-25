@@ -45,3 +45,9 @@ const document = {
 	},
 	security: [{ "JWT": true }],
 }
+
+const routes = ['./index.js']
+const outputFile = './swagger.json'
+
+// Create JSON file:
+swaggerAutogen(outputFile, routes, document)
